@@ -4,7 +4,7 @@ const mapDBToMode = ({
     body,
     tags,
     created_at,
-    update_at,
+    updated_at,
     username
 }) => ({
     id,
@@ -12,7 +12,7 @@ const mapDBToMode = ({
     body,
     tags,
     createdAt: created_at,
-    updateAt: update_at,
+    updatedAt: updated_at,
     username
 });
 
