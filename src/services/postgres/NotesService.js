@@ -65,7 +65,7 @@ class NotesService {
         const updatedAt = new Date().toISOString();
 
         const query = {
-            text: 'UPDATE notes SET title = $1, body = $2, tags = $3, updated_at = $4 where id = $5 RETURNING id',
+            text: 'UPDATE notes SET title = $1, body = $2, tags = $3, updated_at = $4 where id = $5 RETURNING *',
             values: [title, body, tags, updatedAt, id],
         };
 
@@ -74,6 +74,7 @@ class NotesService {
         if (!result.rows.length) {
             throw new NotFoundError('Gagal memperbarui catatan. Id tidak ditemukan');
         }
+        return result.rows.map(mapDBToMode)[0];
     }
 
     async deleteNoteById(id) {
